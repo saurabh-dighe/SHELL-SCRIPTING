@@ -17,7 +17,7 @@ if [ -z $1 ] || [ -z $2 ] ; then
 fi 
 
 create_ec2() {
-    PRIVATE_IP=$(aws ec2 run-instances --image-id $AMI_ID --instance-type t3.micro --security-group-ids $SGID --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}-${ENV}}]" | jq .Instances[].PrivateIpAddress |sed -e 's/"//g')
+    PRIVATE_IP=$(aws ec2 run-instances --image-id $AMI_ID --instance-type t2.micro --security-group-ids $SGID --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}-${ENV}}]" | jq .Instances[].PrivateIpAddress |sed -e 's/"//g')
     echo -e "___ $COLOR $1-$2 Server Created and here is the IP ADDRESS $PRIVATE_IP $NOCOLOR ___"
 
     echo "Creating r53 json file with component name and ip address:"
