@@ -29,7 +29,7 @@ create_ec2() {
 
 # if component name from user is all, then I would like create & update all 10 servers and it's DNS Records 
 if [ "$1" == "all" ]; then 
-    for comp in frontend mongodb catalogue user redis cart mysql shipping rabbtimq payment; do 
+    for comp in frontend mongodb catalogue user redis cart mysql shipping rabbitmq payment; do 
         COMPONENT=$comp
         create_ec2
     done
