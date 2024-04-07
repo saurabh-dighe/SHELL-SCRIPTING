@@ -23,8 +23,8 @@ create_ec2() {
     echo "Creating r53 json file with component name and ip address:"
     sed -e "s/IPADDRESS/${PRIVATE_IP}/g" -e "s/COMPONENT/${COMPONENT}-${ENV}/g" route53.json  > /tmp/dns.json 
 
-    echo -e "___ $COLOR Creating DNS Record for $COMPONENT-${ENV} ___ $NOCOLOR \n\n"
-    aws route53 change-resource-record-sets --hosted-zone-id $HOSTEDZONE_ID --change-batch file:///tmp/dns.json 
+ #   echo -e "___ $COLOR Creating DNS Record for $COMPONENT-${ENV} ___ $NOCOLOR \n\n"
+ #   aws route53 change-resource-record-sets --hosted-zone-id $HOSTEDZONE_ID --change-batch file:///tmp/dns.json 
 }
 
 # if component name from user is all, then I would like create & update all 10 servers and it's DNS Records 
